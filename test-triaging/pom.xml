@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.snc.glide.test</groupId>
+		<artifactId>test-parent</artifactId>
+		<version>16.workspace.0.0-SNAPSHOT</version>
+		<relativePath>../test-parent/pom.xml</relativePath>
+	</parent>
+
+	<artifactId>test-triaging</artifactId>
+
+	<description>
+		Build tools test traging
+	</description>
+
+	<properties>
+		<jenkins.slaves><![CDATA[it &amp;&amp; single-exe]]></jenkins.slaves>
+		<jenkins.disabled>true</jenkins.disabled>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<!-- This is providing non-UI testing tools -->
+			<groupId>com.snc.glide.test</groupId>
+			<artifactId>glide-test-tools</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<!-- This is providing UI/Selenium testing tools. You can remove it if
+				you do not need it. If you do include it, then you can remove glide-test-tools
+				above as selenium transitively depends on it -->
+			<groupId>com.snc.glide.test</groupId>
+			<artifactId>glide-selenium</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.snc</groupId>
+			<artifactId>glide-ng</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.snc.glide.test</groupId>
+			<artifactId>platform-api-test-tools</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.snc.glide.test</groupId>
+			<artifactId>platform-core-script-test</artifactId>
+			<version>${project.version}</version>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.snc.glide.test</groupId>
+			<artifactId>platform-core-test</artifactId>
+			<version>${project.version}</version>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>it</id>
+			<dependencies>
+				<!-- Those are (big) dependencies required to run the full test unattended.
+					They are not active unless you run with the 'it' profile ('mvn -Pit' from
+					the command line) -->
+				<dependency>
+					<groupId>com.snc</groupId>
+					<artifactId>glide-dist</artifactId>
+					<classifier>dist</classifier>
+					<type>zip</type>
+					<scope>test</scope>
+				</dependency>
+				
+		
+			</dependencies>
+		</profile>
+	</profiles>
+</project>

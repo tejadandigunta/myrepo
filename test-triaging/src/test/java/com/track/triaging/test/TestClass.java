@@ -1,12 +1,14 @@
 package com.track.triaging.test;
 
+import java.io.File;
+
 import org.junit.Test;
 import com.track.triaging.ExcelUtils;
 import com.track.triaging.TestFailure;
 
 public class TestClass {
 	
-	@Test
+//	@Test
 	public void demoTest() {
 		final String NAME = "16.uxidc.0.100";
 		ExcelUtils.createExcelSheet(NAME);
@@ -23,5 +25,13 @@ public class TestClass {
 		ExcelUtils.writeTestFailure(test2, "Teja");
 		ExcelUtils.writeExcel("teja.dandigunta");
 		System.out.println("completed");
+	}
+	
+	@Test
+	public void myDemo() {
+	        File f = new File("src/test/ListExportDownloads");
+//	        f.mkdir();
+	        f.delete();
+	         System.out.println(f.getAbsolutePath());
 	}
 }

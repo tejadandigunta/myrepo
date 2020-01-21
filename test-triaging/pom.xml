@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.snc.glide.test</groupId>
 		<artifactId>test-parent</artifactId>
-		<version>16.workspace.0.0-SNAPSHOT</version>
+		<version>18.0.0.0-SNAPSHOT</version>
 		<relativePath>../test-parent/pom.xml</relativePath>
 	</parent>
 
